@@ -6,6 +6,7 @@ RUN apk add \
 	bash \
 	gnupg \
 	groff \
+	less \
 	py-pip
 
 RUN pip install awscli
