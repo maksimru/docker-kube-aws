@@ -4,6 +4,7 @@ RUN apk update && apk upgrade
 
 RUN apk add \
 	bash \
+	ca-certificates \
 	gnupg \
 	groff \
 	less \
