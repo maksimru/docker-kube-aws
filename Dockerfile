@@ -2,7 +2,10 @@ FROM alpine:3.5
 
 RUN apk update && apk upgrade
 
-RUN apk add gnupg bash
+RUN apk add \
+	awscli \
+	bash \
+	gnupg
 
 RUN gpg2 --keyserver pgp.mit.edu --recv-key FC8A365E
 
