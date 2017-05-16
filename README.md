@@ -1,15 +1,17 @@
 ## What Is This?
 This is my containerized [kube-aws](https://github.com/coreos/kube-aws/releases) tool from CoreOS. It includes the kube-aws, awscli and kubectl.
 
+## Why Should I Use It?
+Probably you don't want to have local installation of kube-aws, awscli, kubectl, it is too complicated or your OS is not compatible
+
 ## How Do I Use It?
-* Use this command: `sudo docker run --rm -it -e AWS_ACCESS_KEY_ID= -e AWS_SECRET_ACCESS_KEY= -e AWS_DEFAULT_REGION= -v $PWD:$PWD -w $PWD maksimru/docker-kube-aws`.
-* This assumes you have the AWS environment variables used above set up on your container __host__ machine.
+* Use this command: `docker run --rm -it -e AWS_ACCESS_KEY_ID= -e AWS_SECRET_ACCESS_KEY= -e AWS_DEFAULT_REGION= -v $PWD:$PWD -w $PWD maksimru/docker-kube-aws`.
 * This assumes you are starting from a path on the container host where you either have or want to create a kubernetes stack.
 * You will land in bash. From there, you can use all the usual commands of kube-aws, kubectl, or awscli.
 
 ## Setup kubernetes cluster
 1) Start docker container with all stuff using your AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and AWS_DEFAULT_REGION
-`sudo docker run --rm -it -e AWS_ACCESS_KEY_ID= -e AWS_SECRET_ACCESS_KEY= -e AWS_DEFAULT_REGION= -v $PWD:$PWD -w $PWD maksimru/docker-kube-aws`
+`docker run --rm -it -e AWS_ACCESS_KEY_ID= -e AWS_SECRET_ACCESS_KEY= -e AWS_DEFAULT_REGION= -v $PWD:$PWD -w $PWD maksimru/docker-kube-aws`
 2) Run `aws kms --region=us-east-1 create-key --description="kube-aws assets"`
 copy kms-key-arn to the next step
 3) Run `kube-aws init --cluster-name=mycluster --external-dns-name=mycluster.com --region=us-east-1 --availability-zone=us-east-1a --key-name=q360_legacy_cluster_staging --kms-key-arn="arn:aws:kms:us-east-1......."`
