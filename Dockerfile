@@ -1,10 +1,10 @@
 FROM alpine:3.5
 
 ARG kube_aws_version
-ENV kube_aws_version ${kube_aws_version:-v0.9.8}
+ENV kube_aws_version ${kube_aws_version:-v0.9.9-rc.4}
 
 ARG kubectl_version
-ENV kubectl_version ${kubectl_version:-v1.7.4}
+ENV kubectl_version ${kubectl_version:-v1.8.4}
 
 RUN apk update && apk upgrade
 
