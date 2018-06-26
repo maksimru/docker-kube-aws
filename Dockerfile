@@ -1,10 +1,10 @@
 FROM alpine:3.5
 
 ARG kube_aws_version
-ENV kube_aws_version ${kube_aws_version:-v0.9.9}
+ENV kube_aws_version ${kube_aws_version:-v0.10.0}
 
 ARG kubectl_version
-ENV kubectl_version ${kubectl_version:-v1.8.4}
+ENV kubectl_version ${kubectl_version:-v1.9.3}
 
 RUN apk update && apk upgrade
 
@@ -17,8 +17,6 @@ RUN apk add \
 	py-pip
 
 RUN pip install awscli
-
-RUN gpg2 --keyserver pgp.mit.edu --recv-key FC8A365E
 
 ADD https://github.com/coreos/kube-aws/releases/download/$kube_aws_version/kube-aws-linux-amd64.tar.gz /temp/kube-aws/
 
