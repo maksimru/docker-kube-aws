@@ -4,7 +4,7 @@ ARG kube_aws_version
 ENV kube_aws_version ${kube_aws_version:-v0.12.0}
 
 ARG kubectl_version
-ENV kubectl_version ${kubectl_version:-v1.10.2}
+ENV kubectl_version ${kubectl_version:-v1.11.3}
 
 RUN apk update && apk upgrade
 
@@ -26,7 +26,7 @@ RUN mv /temp/kube-aws/linux-amd64/kube-aws /usr/local/bin
 
 RUN rm -r /temp/kube-aws
 
-ADD https://storage.googleapis.com/kubernetes-release/release/v1.11.3/bin/linux/amd64/kubectl /usr/local/bin/
+ADD https://storage.googleapis.com/kubernetes-release/release/$kubectl_version/bin/linux/amd64/kubectl /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/kubectl
 
